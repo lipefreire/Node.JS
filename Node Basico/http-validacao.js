@@ -13,7 +13,8 @@ async function checaStatus(arrayURLs) {
           return res.status;
     }))
     return arrayStatus;
-  } catch(erro) {
+  }
+  catch (erro) {
     manejaErros(erro);
   }
 }

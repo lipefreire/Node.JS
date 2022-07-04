@@ -8,11 +8,11 @@ function extraiLinks(texto) {
   while((temp = regex.exec(texto)) !== null) {
     arrayResultados.push({ [temp[1]]: temp[2] })
   }
-  return arrayResultados.length === 0 ? 'não há links' : arrayResultados;
+  return arrayResultados.length === 0 ? 'Não há links.' : arrayResultados;
 }
 
 function trataErro(erro) {
-  throw new Error(chalk.red(erro.code, 'não há arquivo no caminho'));
+  throw new Error(chalk.red(erro.code, 'Caminho não encontrado.'));
 }
 
 async function pegaArquivo(caminhoDoArquivo) {
@@ -20,7 +20,8 @@ async function pegaArquivo(caminhoDoArquivo) {
   try {
     const texto = await fs.promises.readFile(caminhoDoArquivo, encoding)
     return extraiLinks(texto);
-  } catch(erro) {
+  }
+  catch(erro) {
     trataErro(erro);
   }
 }
